@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: notice-demo-bank
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bank1?characterEncoding=utf-8
+    username: root
+    password: Anbang713
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+server:
+  servlet:
+    context-path: /bank
+  port: 9012
+eureka:
+  client:
+    service-url:
+      defaultZone: http://Anbang713:pwd713@localhost:9010/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 10 # 5秒钟发送一次心跳
+    lease-expiration-duration-in-seconds: 30 # 10秒不发送就过期
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,env
+rocketmq:
+  producer:
+    group: producer_bank1
+  name-server: 192.168.1.17:9876
